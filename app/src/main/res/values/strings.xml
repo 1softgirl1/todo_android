@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Tasks</string>
+    <string name="task_add">Add Task</string>
+    <string name="no_tasks">No tasks available</string>
+    <string name="edit_task_title">Edit task</string>
+    <string name="task_entry_title">task_entry_title</string>
+    <string name="save_action">save_action</string>
+    <string name="task_title_req">Title *</string>
+    <string name="task_description_req">Description *</string>
+    <string name="task_priority_req">Priority *</string>
+    <string name="required_fields">* Required fields</string>
+    <string name="back_button">back_button</string>
+
+</resources>

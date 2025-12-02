@@ -1,0 +1,47 @@
+package com.example.tasks.ui
+
+import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory
+import androidx.lifecycle.createSavedStateHandle
+import androidx.lifecycle.viewmodel.CreationExtras
+import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.viewModelFactory
+import com.example.tasks.TasksApplication
+import com.example.tasks.ui.home.HomeViewModel
+import com.example.tasks.ui.task.TaskDetailsViewModel
+import com.example.tasks.ui.task.TaskEditViewModel
+import com.example.tasks.ui.task.TaskEntryViewModel
+
+object AppViewModelProvider {
+
+    val Factory = viewModelFactory {
+
+        initializer {
+            TaskEditViewModel(
+                repository = tasksApplication().container.tasksRepository,
+                taskId = this.createSavedStateHandle()["taskId"] ?: 0
+            )
+        }
+
+        initializer {
+            TaskEntryViewModel(
+                repository = tasksApplication().container.tasksRepository
+            )
+        }
+
+        initializer {
+            TaskDetailsViewModel(
+                repository = tasksApplication().container.tasksRepository,
+                taskId = this.createSavedStateHandle()["taskId"] ?: 0
+            )
+        }
+
+        initializer {
+            HomeViewModel(
+                repository = tasksApplication().container.tasksRepository
+            )
+        }
+    }
+}
+
+fun CreationExtras.tasksApplication(): TasksApplication =
+    (this[AndroidViewModelFactory.APPLICATION_KEY] as TasksApplication)
